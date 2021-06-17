@@ -81,7 +81,7 @@ HeY❥ Wa†รuƤ Mℽ Nคϻe i͢͢͢ຮ Michͥสeͣlͫ/n
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ ADD HAGUROMO TO YOUR GROUP ➕️", url="t.me/rikudo_senin_bot?startgroup=true"),
+            text="➕️ ADD Michͥสeͣlͫ TO YOUR GROUP ➕️", url="t.me/Its_Michael_robot?startgroup=true,"),
     ],
     [
         InlineKeyboardButton(text="ℹ️ABOUT", callback_data="masha_"),
