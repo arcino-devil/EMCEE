@@ -102,8 +102,8 @@ buttons = [
 
 
 HELP_STRINGS = """
-༆*Rikudo Senin comes with many special features in it*༆
-꧁*CHECK ALL BUTTON BELOW TO EXPLORE EVERY COMMANDS OF EMCEE*꧂
+༆*ƒєαтυяєѕ σƒ Michͥสeͣlͫ αяє*༆
+꧁*¢нє¢к αℓℓ тнє вυттσηѕ тσ єχρℓσяє тнє ƒєαтυяєѕ*꧂
 𖣘 *All commands can either be used with* `/` *or* `!`.
 𖣘 *If you facing any issue or find any bugs in any command then you can report it in @Emcee_Support* [.](https://telegra.ph/file/36c57221ea00d88fbcd89.jpg)
 """
