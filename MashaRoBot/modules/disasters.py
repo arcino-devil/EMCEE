@@ -74,16 +74,16 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        message.reply_text("This member is already a Legend Disaster")
+        message.reply_text("This member is already a Boss Disaster")
         return ""
 
     if user_id in DEMONS:
-        rt += "Requested EP to promote a Satan Disaster to Legend."
+        rt += "Requested EP to promote a Underboss Disaster to Legend."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Requested EP to promote a Immortal Disaster to Legend."
+        rt += "Requested EP to promote a Associate Disaster to Legend."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -95,7 +95,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt
-        + "\nSuccessfully set Disaster level of {} to Legend!".format(
+        + "\nSuccessfully set Disaster level of {} to Boss!".format(
             user_member.first_name
         )
     )
@@ -136,16 +136,16 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "Requested EP to demote this Legend to Satan"
+        rt += "Requested EP to demote this Boss to Underboss"
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        message.reply_text("This user is already a Satan Disaster.")
+        message.reply_text("This user is already a Underboss Disaster.")
         return ""
 
     if user_id in WOLVES:
-        rt += "Requested EP to promote this Immortal Disaster to Satan"
+        rt += "Requested EP to promote this Associate Disaster to Underboss"
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -156,7 +156,7 @@ def addsupport(
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added as a Satan Disaster!"
+        rt + f"\n{user_member.first_name} was added as a Underboss Disaster!"
     )
 
     log_message = (
@@ -192,17 +192,17 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a Legend Disaster, Demoting to Immortal."
+        rt += "This member is a Boss Disaster, Demoting to Associate."
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a Satan Disaster, Demoting to Immortal."
+        rt += "This user is already a Underboss Disaster, Demoting to Associate."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        message.reply_text("This user is already a Immortal Disaster.")
+        message.reply_text("This user is already a Associate Disaster.")
         return ""
 
     data["whitelists"].append(user_id)
@@ -212,7 +212,7 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\nSuccessfully promoted {user_member.first_name} to a Immortal Disaster!"
+        rt + f"\nSuccessfully promoted {user_member.first_name} to a Associate Disaster!"
     )
 
     log_message = (
@@ -248,22 +248,22 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a Legend Disaster, Demoting to Monster."
+        rt += "This member is a Boss Disaster, Demoting to Thug."
         data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a Satan Disaster, Demoting to Monster."
+        rt += "This user is already a Underboss Disaster, Demoting to Thug."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "This user is already a Immortal Disaster, Demoting to Monster."
+        rt += "This user is already a Associate Disaster, Demoting to Thug."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
     if user_id in TIGERS:
-        message.reply_text("This user is already a Monster.")
+        message.reply_text("This user is already a Thug.")
         return ""
 
     data["tigers"].append(user_id)
@@ -273,7 +273,7 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\nSuccessfully promoted {user_member.first_name} to a Monster Disaster!"
+        rt + f"\nSuccessfully promoted {user_member.first_name} to a Thug Disaster!"
     )
 
     log_message = (
@@ -327,7 +327,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a Legend Disaster!")
+        message.reply_text("This user is not a Boss Disaster!")
         return ""
 
 
@@ -370,7 +370,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a Demon level Disaster!")
+        message.reply_text("This user is not a Mafia level Disaster!")
         return ""
 
 
@@ -412,7 +412,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a Immortal Disaster!")
+        message.reply_text("This user is not a Associate Disaster!")
         return ""
 
 
@@ -454,14 +454,14 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a Monster Disaster!")
+        message.reply_text("This user is not a Thug Disaster!")
         return ""
 
 
 @run_async
 @whitelist_plus
 def whitelistlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Immortal Disasters 🐺:</b>\n"
+    reply = "<b>Known Associate Disasters 🐺:</b>\n"
     m = update.effective_message.reply_text(
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
@@ -480,7 +480,7 @@ def whitelistlist(update: Update, context: CallbackContext):
 @run_async
 @whitelist_plus
 def tigerlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Monster Disasters 🐯:</b>\n"
+    reply = "<b>Known Thug Disasters 🐯:</b>\n"
     m = update.effective_message.reply_text(
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
@@ -502,7 +502,7 @@ def supportlist(update: Update, context: CallbackContext):
     m = update.effective_message.reply_text(
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
-    reply = "<b>Known Satan Disasters 👹:</b>\n"
+    reply = "<b>Known Underboss Disasters 👹:</b>\n"
     for each_user in DEMONS:
         user_id = int(each_user)
         try:
@@ -521,7 +521,7 @@ def sudolist(update: Update, context: CallbackContext):
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
     true_sudo = list(set(DRAGONS) - set(DEV_USERS))
-    reply = "<b>Known Legend Disasters 🐉:</b>\n"
+    reply = "<b>Known Boss Disasters 🐉:</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
         try:
@@ -540,7 +540,7 @@ def devlist(update: Update, context: CallbackContext):
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML
     )
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Emcee powerhouse Members ⚡️:</b>\n"
+    reply = "<b>Shuten-Doji Mafias ⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -556,10 +556,10 @@ __help__ = f"""
 Commands listed here only work for users with special access are mainly used for troubleshooting, debugging purposes.
 Group admins/group owners do not need these commands. 
  ╔ *List all special users:*
- ╠ `/dragons`*:* Lists all Dragon disasters
- ╠ `/demons`*:* Lists all Demon disasters
- ╠ `/tigers`*:* Lists all Tigers disasters
- ╠ `/wolves`*:* Lists all Wolf disasters
+ ╠ `/bosses`*:* Lists all Dragon disasters
+ ╠ `/underbosses`*:* Lists all Demon disasters
+ ╠ `/thugs`*:* Lists all Tigers disasters
+ ╠ `/associates`*:* Lists all Wolf disasters
  ╚ `/heroes`*:* Lists all Hero Association members
  ╔ *Ping:*
  ╠ `/ping`*:* gets ping time of bot to telegram server
