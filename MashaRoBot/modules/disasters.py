@@ -78,12 +78,12 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         return ""
 
     if user_id in DEMONS:
-        rt += "Requested EP to promote a Underboss Disaster to Legend."
+        rt += "Requested EP to promote a Underboss Disaster to Boss."
         data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Requested EP to promote a Associate Disaster to Legend."
+        rt += "Requested EP to promote a Associate Disaster to Boss."
         data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
